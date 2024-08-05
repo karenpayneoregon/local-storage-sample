@@ -19,6 +19,7 @@ public class IndexModel : PageModel
     {
         _localStorage = new LocalStorage(
             vault.Configuration, vault.Password);
+
     }
 
     public void OnGet() { }

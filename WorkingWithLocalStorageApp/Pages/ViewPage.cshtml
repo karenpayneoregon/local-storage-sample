@@ -3,4 +3,23 @@
 @{
 }
 
-<h1>Here</h1>
+<h1 class="fs-5">From index</h1>
+
+<div class="row">
+    <div class="col-1 fw-bold text-end">
+        First
+    </div>
+    <div class="col">
+        @Model.Person.FirstName
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-1 fw-bold  text-end">
+        Last
+    </div>
+    <div class="col">
+        @Model.Person.LastName
+    </div>
+</div>
+

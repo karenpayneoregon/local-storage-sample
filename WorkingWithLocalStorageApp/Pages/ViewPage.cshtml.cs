@@ -23,8 +23,8 @@ namespace WorkingWithLocalStorageApp.Pages
 
         public void OnGet()
         {
-            var person = _localStorage.Get<Person>(LocalStorageKey);
-            Log.Information("Person: {person}", person);
+            Person = _localStorage.Get<Person>(LocalStorageKey);
+
         }
     }
 }
