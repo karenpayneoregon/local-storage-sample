@@ -4,6 +4,7 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>disable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>3be4bf47-0e7c-40c3-ab3c-20e5c9763d7f</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -21,7 +22,7 @@
 		<!-- ReSharper disable once VulnerablePackage -->
 		<PackageReference Include="LocalStorage" Version="2.1.0" />
 		<PackageReference Include="SeriLogThemesLibrary" Version="1.0.0.1" />
-		<PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
-		<PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+		<PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
 	</ItemGroup>
 </Project>

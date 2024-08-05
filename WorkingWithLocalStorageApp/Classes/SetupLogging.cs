@@ -1,5 +1,4 @@
-﻿using Serilog;
-using Serilog.Events;
+﻿using Serilog.Events;
 using SeriLogThemesLibrary;
 
 namespace WorkingWithLocalStorageApp.Classes;

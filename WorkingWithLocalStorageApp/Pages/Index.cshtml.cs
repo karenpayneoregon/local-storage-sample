@@ -1,32 +1,35 @@
 ﻿using Hanssens.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Serilog;
+using WorkingWithLocalStorageApp.Classes;
+using WorkingWithLocalStorageApp.Interfaces;
 using WorkingWithLocalStorageApp.Models;
+// ReSharper disable ConvertConstructorToMemberInitializers
 
 
 namespace WorkingWithLocalStorageApp.Pages;
 public class IndexModel : PageModel
 {
-    const string LocalStorageKey = "user";
+    string LocalStorageKey = LocalSetup.Instance.Key;
     private LocalStorage _localStorage;
 
     [BindProperty]
     public Person Person { get; set; }
-    public IndexModel()
+    public IndexModel(ILocalSetup vault)
     {
-        _localStorage = new LocalStorage();
+        _localStorage = new LocalStorage(
+            vault.Configuration, vault.Password);
     }
 
     public void OnGet() { }
 
-    public void OnPostSetLocalToLocalStorage()
+    public RedirectToPageResult OnPostSetLocalToLocalStorage()
     {
         Person.Id = 1;
         _localStorage.Store(LocalStorageKey,Person);
         _localStorage.Persist();
-
-        Log.Information("Set");
+        
+        return RedirectToPage("ViewPage");
     }
 
     public void OnPostGetFromLocalStorage()
