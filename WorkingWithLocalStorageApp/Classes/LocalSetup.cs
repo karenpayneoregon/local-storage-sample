@@ -16,7 +16,7 @@ public sealed class LocalSetup : ILocalSetup
     public LocalStorageConfiguration Configuration { get; set; }
     public string Key { get; init; } 
     public string Password { get; init; }
-    private static string Salt { get; set; }
+    public static string Salt { get; set; }
     
     public LocalSetup()
     {
@@ -27,5 +27,6 @@ public sealed class LocalSetup : ILocalSetup
         Configuration = GetConfiguration();
     }
 
-    private static LocalStorageConfiguration GetConfiguration() => new() { EnableEncryption = true, EncryptionSalt = Salt };
+    private static LocalStorageConfiguration GetConfiguration() 
+        => new() { EnableEncryption = true, EncryptionSalt = Salt };
 }

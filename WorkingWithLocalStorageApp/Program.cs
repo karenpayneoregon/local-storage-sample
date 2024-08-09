@@ -1,4 +1,5 @@
 using Hanssens.Net;
+using Microsoft.Extensions.DependencyInjection;
 using WorkingWithLocalStorageApp.Classes;
 using WorkingWithLocalStorageApp.Interfaces;
 using WorkingWithLocalStorageApp.Models;
@@ -10,11 +11,16 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
         builder.Services.AddRazorPages();
+
         SetupLogging.Development();
 
         builder.Services.AddSingleton<ILocalSetup, LocalSetup>();
+        builder.Services.AddScoped<ILocalStorage>(provider =>
+        {
+            var localSetup = provider.GetRequiredService<ILocalSetup>();
+            return new LocalStorage(localSetup.Configuration, localSetup.Password);
+        });
 
         var app = builder.Build();
 

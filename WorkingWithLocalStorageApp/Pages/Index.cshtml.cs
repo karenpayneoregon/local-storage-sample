@@ -15,12 +15,7 @@ public class IndexModel : PageModel
 
     [BindProperty]
     public Person Person { get; set; }
-    public IndexModel(ILocalSetup vault)
-    {
-        _localStorage = new LocalStorage(
-            vault.Configuration, vault.Password);
-
-    }
+    public IndexModel(ILocalStorage storage) => _localStorage = (LocalStorage)storage;
 
     public void OnGet() { }
 

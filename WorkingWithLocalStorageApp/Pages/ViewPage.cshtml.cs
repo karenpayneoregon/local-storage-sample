@@ -13,9 +13,9 @@ namespace WorkingWithLocalStorageApp.Pages
         string LocalStorageKey = LocalSetup.Instance.Key;
         private LocalStorage _localStorage;
 
-        public ViewPageModel(ILocalSetup vault)
+        public ViewPageModel(ILocalSetup vault, ILocalStorage storage)
         {
-            _localStorage = new LocalStorage(vault.Configuration, vault.Password);
+            _localStorage = (LocalStorage)storage;
         }
 
         [BindProperty]
