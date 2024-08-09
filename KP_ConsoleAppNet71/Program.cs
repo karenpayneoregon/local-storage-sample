@@ -1,6 +1,6 @@
 ﻿using KP_ConsoleAppNet71.Classes;
 using KP_ConsoleAppNet71.Models;
-using System.Reflection;
+using static System.Globalization.DateTimeFormatInfo;
 
 namespace KP_ConsoleAppNet71;
 
@@ -9,8 +9,34 @@ internal partial class Program
     static async Task Main(string[] args)
     {
         await ReadCustomersAsyncExample();
-        
+        Question();
         Console.ReadLine();
+    }
+
+    private static void Question()
+    {
+
+
+
+        IEnumerable<Month> months = CurrentInfo!.MonthNames[..^1].Select((name, index) =>
+            new Month(index + 1, name));
+
+        //var test = CurrentInfo!.MonthNames[..^1].ToList().Details();
+
+
+        List<DetailsContainer<string>> details = CurrentInfo!.MonthNames[..^1].Details();
+
+
+
+
+
+        foreach (var container in details)
+        {
+            Console.WriteLine($"{container.ToString()}");
+        }
+
+
+
     }
 
     private static async Task ReadCustomersAsyncExample()
@@ -64,7 +90,7 @@ internal partial class Program
               }
             }
             """);
-        
+
         Console.WriteLine(
             /*lang=xml*/
             """
@@ -81,4 +107,41 @@ internal partial class Program
 
             """);
     }
+}
+
+public record Month(int Id, string Name)
+{
+    public override string ToString() => $"{{ Name = {Name}, Id = {Id} }}";
+}
+
+
+public static class GenericExtensions
+{
+    public static List<DetailsContainer<T>> Details<T>(this List<T> sender) =>
+        sender.Select((element, index) => new DetailsContainer<T>
+        {
+            Value = element,
+            StartIndex = new(index),
+            EndIndex = new(sender.Count - index - 1, true),
+            Index = index + 1
+        }).ToList();
+    
+    public static List<DetailsContainer<T>> Details<T>(this T[] sender) =>
+        sender.Select((element, index) => new DetailsContainer<T>
+        {
+            Value = element,
+            StartIndex = new(index),
+            EndIndex = new(sender.Length - index - 1, true),
+            Index = index + 1
+        }).ToList();
+}
+
+public class DetailsContainer<T>
+{
+    public T Value { get; init; }
+    public Index StartIndex { get; init; }
+    public Index EndIndex { get; init; }
+    public int Index { get; init; }
+    public override string ToString()
+        => $"Value: {Value}, Index: {Index}, Start: {StartIndex}, End: {EndIndex}";
 }

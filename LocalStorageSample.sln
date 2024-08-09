@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KP_ConsoleAppNet71", "KP_ConsoleAppNet71\KP_ConsoleAppNet71.csproj", "{A5CDFD6B-D5C8-4431-8952-10180ABE84BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KP_ConsoleAppNet71", "KP_ConsoleAppNet71\KP_ConsoleAppNet71.csproj", "{A5CDFD6B-D5C8-4431-8952-10180ABE84BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Experiments", "Experiments", "{E4F6CD8A-9ACA-46F2-B0E2-7EA61ABA0F49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A5CDFD6B-D5C8-4431-8952-10180ABE84BD} = {E4F6CD8A-9ACA-46F2-B0E2-7EA61ABA0F49}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D925ECAD-1BD4-4DB9-A0EA-61BAFB671378}

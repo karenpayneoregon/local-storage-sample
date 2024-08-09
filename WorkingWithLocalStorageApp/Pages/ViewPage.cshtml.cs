@@ -10,21 +10,16 @@ namespace WorkingWithLocalStorageApp.Pages
 
     public class ViewPageModel : PageModel
     {
-        string LocalStorageKey = LocalSetup.Instance.Key;
         private LocalStorage _localStorage;
-
-        public ViewPageModel(ILocalSetup vault, ILocalStorage storage)
-        {
-            _localStorage = (LocalStorage)storage;
-        }
 
         [BindProperty]
         public Person Person { get; set; }
 
+        public ViewPageModel(ILocalStorage storage) => _localStorage = storage as LocalStorage;
+
         public void OnGet()
         {
-            Person = _localStorage.Get<Person>(LocalStorageKey);
-
+            Person = _localStorage.Get<Person>(LocalSetup.Instance.Key);
         }
     }
 }

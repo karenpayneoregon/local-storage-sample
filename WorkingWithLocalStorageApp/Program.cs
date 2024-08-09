@@ -1,8 +1,6 @@
 using Hanssens.Net;
-using Microsoft.Extensions.DependencyInjection;
 using WorkingWithLocalStorageApp.Classes;
 using WorkingWithLocalStorageApp.Interfaces;
-using WorkingWithLocalStorageApp.Models;
 
 namespace WorkingWithLocalStorageApp;
 public class Program
@@ -15,7 +13,13 @@ public class Program
 
         SetupLogging.Development();
 
+        /*
+         * service to get configuration and password from appsettings.json
+         * setup with user secrets (Azure is a better option).
+         */
         builder.Services.AddSingleton<ILocalSetup, LocalSetup>();
+
+        // service to read and write to local storage file
         builder.Services.AddScoped<ILocalStorage>(provider =>
         {
             var localSetup = provider.GetRequiredService<ILocalSetup>();

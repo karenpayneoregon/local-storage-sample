@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WorkingWithLocalStorageApp.Classes;
-using WorkingWithLocalStorageApp.Interfaces;
 using WorkingWithLocalStorageApp.Models;
-// ReSharper disable ConvertConstructorToMemberInitializers
 
 
 namespace WorkingWithLocalStorageApp.Pages;
@@ -15,7 +13,8 @@ public class IndexModel : PageModel
 
     [BindProperty]
     public Person Person { get; set; }
-    public IndexModel(ILocalStorage storage) => _localStorage = (LocalStorage)storage;
+
+    public IndexModel(ILocalStorage storage) => _localStorage = storage as LocalStorage;
 
     public void OnGet() { }
 
