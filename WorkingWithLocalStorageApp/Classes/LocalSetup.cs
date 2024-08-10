@@ -5,10 +5,9 @@ namespace WorkingWithLocalStorageApp.Classes;
 
 /// <summary>
 /// Setup for writing and reading local storage file.
+///
+/// - Configuration and password are read from appsettings.json and used in Program.cs
 /// </summary>
-/// <remarks>
-/// For demonstration user secrets are used
-/// </remarks>
 public sealed class LocalSetup : ILocalSetup
 {
     private static readonly Lazy<LocalSetup> Lazy = new(() => new LocalSetup());

@@ -8,13 +8,14 @@ using WorkingWithLocalStorageApp.Models;
 namespace WorkingWithLocalStorageApp.Pages;
 public class IndexModel : PageModel
 {
-    string LocalStorageKey = LocalSetup.Instance.Key;
+    string LocalStorageKey => LocalSetup.Instance.Key;
     private LocalStorage _localStorage;
 
     [BindProperty]
     public Person Person { get; set; }
 
-    public IndexModel(ILocalStorage storage) => _localStorage = storage as LocalStorage;
+    public IndexModel(ILocalStorage storage) 
+        => _localStorage = storage as LocalStorage;
 
     public void OnGet() { }
 

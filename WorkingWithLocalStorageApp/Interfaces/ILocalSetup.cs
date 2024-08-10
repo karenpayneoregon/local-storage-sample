@@ -2,6 +2,9 @@
 
 namespace WorkingWithLocalStorageApp.Interfaces;
 
+/// <summary>
+/// Members for setting up local storage.
+/// </summary>
 public interface ILocalSetup
 {
     LocalStorageConfiguration Configuration { get; set; }

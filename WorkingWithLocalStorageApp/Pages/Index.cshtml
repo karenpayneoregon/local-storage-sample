@@ -5,23 +5,21 @@
 }
 
 <div class="container">
-    <div class="alert alert-primary" role="alert">
-        <h1 class="fs-5">Welcome</h1>    
-    </div>
+    <h1 class="fs-5">Welcome</h1>
     <form id="main" method="post">
-        
+
         <div class="mb-3">
             <label for="firstName" class="form-label">First name</label>
-            <input type="text" asp-for="Person.FirstName" class="form-control" id="firstName" aria-describedby="emailHelp">
+            <input type="text" asp-for="Person.FirstName" class="form-control kpwidth" id="firstName">
         </div>
-        
+
         <div class="mb-3">
             <label for="lastName" class="form-label">Last name</label>
-            <input type="text" asp-for="Person.LastName" class="form-control" id="lastName">
+            <input type="text" asp-for="Person.LastName" class="form-control kpwidth" id="lastName">
         </div>
 
         <div class="row">
-            <div class="col-auto pt-2 ps-5 pb-2 ">
+            <div class="col-auto pt-2 ps-3 pb-2 ">
 
                 <input type="submit"
                        asp-page-handler="SetLocalToLocalStorage"
